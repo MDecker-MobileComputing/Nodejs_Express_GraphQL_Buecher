@@ -51,10 +51,10 @@ export const buecherResolver = {
 
     buecher: () => alleBuecher,
 
-    buecher: ({id}) => alleBuecher.find( buch => buch.id == id ),
+    buch: ({id}) => alleBuecher.find( buch => buch.id == id ),
 
-    sucheBuecher: ( queryString ) => {
-        const queryStringNormalisiert = queryString.trim().toLowerCase();
+    sucheBuch: ( {query} ) => {
+        const queryStringNormalisiert = query.trim().toLowerCase();
         return alleBuecher.filter( buch =>
             buch.titel.toLowerCase().includes( queryStringNormalisiert ) ||
             buch.autor.toLowerCase().includes( queryStringNormalisiert )
