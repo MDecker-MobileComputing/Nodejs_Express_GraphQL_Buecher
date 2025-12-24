@@ -48,6 +48,23 @@ Alle Felder von Buch mit `ID=2` zurückgeben:
 }
 ```
 
+<br>
+
+Alle Bücher zurückgeben, die entweder in `titel` oder `autor` den Begriff "casino" enthalten:
+```
+{
+  sucheBuch(query: "casino") {
+    id
+    titel
+    autor
+    jahr
+    genre
+  }
+}
+```
+
+<br>
+
 ----
 
 ## License ##
