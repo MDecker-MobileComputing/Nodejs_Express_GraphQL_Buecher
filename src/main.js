@@ -14,9 +14,9 @@ const app = express();
 app.use( express.static( "public" ) );
 
 app.use( "/graphql", graphqlHTTP({
-    schema: buecherSchema,
+    schema   : buecherSchema,
     rootValue: buecherResolver,
-    graphiql: true // damit bei Browser-Request GraphQL-Test-Client ausgeliefert wird
+    graphiql : true // damit bei Browser-Request GraphQL-Test-Client ausgeliefert wird
 }));
 
 app.listen( PORT_NUMMER, () => {

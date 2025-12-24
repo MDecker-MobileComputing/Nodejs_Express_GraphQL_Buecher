@@ -31,16 +31,16 @@ export const buecherSchema = buildSchema(`
 
 const alleBuecher = [
     {
-        id: "1",
+        id   : "1",
         titel: "Der Herr der Ringe",
         autor: "J.R.R. Tolkien",
-        jahr: 1954,
+        jahr : 1954,
         genre: "Fantasy"
     },{
-        id: "2",
+        id   : "2",
         titel: "James Bond: Casino Royale",
         autor: "Ian Fleming",
-        jahr: 1953,
+        jahr : 1953,
         genre: "Thriller"
     }
 ];
