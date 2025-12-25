@@ -65,6 +65,26 @@ Alle Bücher zurückgeben, die entweder in `titel` oder `autor` den Begriff "cas
 
 <br>
 
+Neues Buch anlegen:
+```
+mutation {
+  buchDazu(input: {
+    titel: "Der Prozess"
+    autor: "Franz Kafka"
+    jahr : 1925
+    genre: "Roman"
+  }) {
+    id
+    titel
+    autor
+    jahr
+    genre
+  }
+}
+```
+
+<br>
+
 ----
 
 ## License ##

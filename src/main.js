@@ -1,8 +1,8 @@
-import createLogger     from "logging";
-import express          from "express";
-import { graphqlHTTP }  from "express-graphql";
+import createLogger    from "logging";
+import express         from "express";
+import { graphqlHTTP } from "express-graphql";
 
-import { buecherSchema, buecherResolver } from './graphql.js';
+import { buecherSchema, buecherResolver } from "./graphql.js";
 
 
 const PORT_NUMMER = 8080;

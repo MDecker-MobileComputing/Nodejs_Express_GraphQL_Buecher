@@ -9,7 +9,7 @@ const schemaString = readFileSync( "src/schema.graphql", "utf8" );
 export const buecherSchema = buildSchema( schemaString );
 logger.info( "GraphQL-Schema geladen." );
 
-const alleBuecher = [
+const alleBuecherArray = [
     {
         id   : "1",
         titel: "Der Herr der Ringe",
@@ -43,21 +43,36 @@ const alleBuecher = [
     }
 ];
 
-logger.info( `Es sind ${ alleBuecher.length } Bücher im Katalog.` );
+logger.info( `Es sind ${ alleBuecherArray.length } Bücher im Katalog.` );
 
 
-// Resolver sind die Funktionen, die GraphQL-Felder mit echten Daten verbinden. 
+// Resolver sind die Implementierungen der CRUD-Operationen
 export const buecherResolver = {
 
-    buecher: () => alleBuecher,
+    buecher: () => alleBuecherArray,
 
-    buch: ({id}) => alleBuecher.find( buch => buch.id == id ),
+    buch: ({id}) => alleBuecherArray.find( buch => buch.id == id ),
 
     sucheBuch: ( {query} ) => {
+
         const queryStringNormalisiert = query.trim().toLowerCase();
-        return alleBuecher.filter( buch =>
+        return alleBuecherArray.filter( buch =>
             buch.titel.toLowerCase().includes( queryStringNormalisiert ) ||
             buch.autor.toLowerCase().includes( queryStringNormalisiert )
         );
+    },
+
+    buchDazu: ({ input }) => {
+
+        const neueID = alleBuecherArray.length + 1;
+
+        const buchNeu = { id: neueID, ...input };
+
+        alleBuecherArray.push( buchNeu );
+
+        const buchNeuJson = JSON.stringify( buchNeu );
+        logger.info( `Neues Buch angelegt: ${buchNeuJson}` );
+
+        return buchNeu;
     }
 };
