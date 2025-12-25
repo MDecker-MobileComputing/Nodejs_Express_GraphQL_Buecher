@@ -51,7 +51,7 @@ export const buecherResolver = {
 
     buecher: () => alleBuecherArray,
 
-    buch: ({id}) => alleBuecherArray.find( buch => buch.id == id ),
+    buch: ( {id} ) => alleBuecherArray.find( buch => buch.id == id ),
 
     sucheBuch: ( {query} ) => {
 
@@ -74,5 +74,20 @@ export const buecherResolver = {
         logger.info( `Neues Buch angelegt: ${buchNeuJson}` );
 
         return buchNeu;
+    },
+
+    buchLoeschen: ({ id }) => {
+
+        const buchIndex = alleBuecherArray.findIndex( buch => buch.id === id );
+        if ( buchIndex === -1 ) { 
+        
+            logger.warn( `Kein Buch mit ${id} zum Löschen gefunden.` );
+            return false; 
+        }
+        alleBuecherArray.splice( buchIndex, 1 );
+
+        logger.info( `Buch mit ${id} gelöscht.` );
+
+        return true;
     }
 };

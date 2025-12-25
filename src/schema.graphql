@@ -25,13 +25,13 @@ type Buch {
 type Query {
 
   # alle Buecher holen
-  buecher: [Buch!]!
+  buecher: [ Buch! ]!
 
   # Buch anhand ID abfragen
-  buch(id: ID!): Buch
+  buch( id: ID! ): Buch
 
   # Buch suchen
-  sucheBuch(query: String!): [Buch!]!
+  sucheBuch( query: String! ): [Buch!]!
 }
 
 # Input-Typ für Änderungen auf Datentyp "Buch"; wie "Buch", aber ohne ID
@@ -46,4 +46,6 @@ input BuchInput {
 type Mutation {
 
   buchDazu( input: BuchInput! ): Buch!
+
+  buchLoeschen( id: ID! ): Boolean
 }
