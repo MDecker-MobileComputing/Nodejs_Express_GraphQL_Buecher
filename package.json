@@ -12,7 +12,6 @@
     "logging": "^4.2.0"
   },
   "scripts": {
-    "start": "node src/main.js",
-    "watch": "nodemon src/main.js"
+    "start": "node src/main.js"
   }
 }

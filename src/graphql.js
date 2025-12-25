@@ -1,35 +1,13 @@
 import { buildSchema } from "graphql";
+import { readFileSync } from "fs";
 import createLogger    from "logging";
 
 const logger = createLogger( "graphql" );
 
-// Schema definieren mit "GraphQL SDL". 
-// Ausrufezeichen nach Typ steht für  Not-Null, [typ] für Listen.
-// Es gibt folgende Datentypen: String, Int, Float, Boolean, ID (Strings als Schlüssel).
-// Syntax-Checker: https://www.leskoff.com/s01929-0
-export const buecherSchema = buildSchema(`
-
-  type Buch {
-    id: ID!
-    titel: String!
-    autor: String!
-    jahr: Int
-    genre: String
-  }
-
-  # "Query" ist der Obertyp für alle GraphQL-Anfragen
-  type Query {
-
-    # alle Buecher holen
-    buecher: [Buch!]!
-
-    # Buch anhand ID abfragen
-    buch(id: ID!): Buch
-
-    # Buch suchen
-    sucheBuch(query: String!): [Buch!]!
-  }
-`);
+// Schema aus separater Datei einlesen
+const schemaString = readFileSync( "src/schema.graphql", "utf8" );
+export const buecherSchema = buildSchema( schemaString );
+logger.info( "GraphQL-Schema geladen." );
 
 const alleBuecher = [
     {
