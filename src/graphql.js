@@ -76,6 +76,32 @@ export const buecherResolver = {
         return buchNeu;
     },
 
+    buchAktualisieren: ( { id, input }) => {
+
+        const buchIndex = alleBuecherArray.findIndex( buch => buch.id === id );
+        if ( buchIndex === -1 ) { 
+        
+            logger.warn( `Kein Buch mit ${id} zum Ändern gefunden.` );
+            return null; 
+        }
+
+        // doppelter Spread-Operator (...) um alte und neue Eigenschaften in Objekt zu kopieren,
+        // wobei der zweite Spread evtl. aus dem ersten Spread vorhandene Eigenschaften überschreibt
+        const buchAktualisiert = {
+            ...alleBuecherArray[buchIndex],
+            ...input
+        };
+
+        alleBuecherArray[buchIndex] = buchAktualisiert;
+
+        const buchAktualisiertJson = JSON.stringify( buchAktualisiert );
+        logger.info( `Buch geändert: ${buchAktualisiertJson}` );
+
+        return buchAktualisiert;
+    },
+
+
+
     buchLoeschen: ({ id }) => {
 
         const buchIndex = alleBuecherArray.findIndex( buch => buch.id === id );

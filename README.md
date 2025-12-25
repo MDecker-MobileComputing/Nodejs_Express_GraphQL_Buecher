@@ -83,6 +83,23 @@ mutation {
 }
 ```
 
+<br>
+
+Titel von Buch ändern:
+```
+mutation {
+  buchAktualisieren(
+    id: "5"
+    input: { titel: "Game of Thrones" }
+  ) {
+    titel
+    autor
+  }
+}
+```
+
+<br>
+
 Buch löschen: 
 ```
 mutation {

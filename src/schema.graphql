@@ -34,18 +34,29 @@ type Query {
   sucheBuch( query: String! ): [Buch!]!
 }
 
-# Input-Typ für Änderungen auf Datentyp "Buch"; wie "Buch", aber ohne ID
-input BuchInput {
+# Input-Typ für neues Buch: wie "Buch", aber ohne "ID"
+input BuchInputNeu {
   titel: String!
   autor: String!
   jahr : Int
   genre: String
 }
 
+# Input-Typ für Änderung von Buch: wie "BuchInputNeu", aber ohne Non-Null-Felder
+input BuchInputAendern {
+  titel: String
+  autor: String
+  jahr : Int
+  genre: String
+}
+
+
 # "Mutation" ist der Operationstyp für "C", "U" und "D" in "CRUD"
 type Mutation {
 
-  buchDazu( input: BuchInput! ): Buch!
+  buchDazu( input: BuchInputNeu! ): Buch!
+
+  buchAktualisieren( id: ID!, input: BuchInputAendern! ): Buch
 
   buchLoeschen( id: ID! ): Boolean
 }
