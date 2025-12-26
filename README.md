@@ -89,8 +89,8 @@ Titel von Buch ändern:
 ```
 mutation {
   buchAktualisieren(
-    id: "5"
-    input: { titel: "Game of Thrones" }
+    id: "2"
+    input: { titel: "Casino Royale (James Bond 1)" }
   ) {
     titel
     autor

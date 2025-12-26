@@ -9,6 +9,7 @@ const schemaString = readFileSync( "src/schema.graphql", "utf8" );
 export const buecherSchema = buildSchema( schemaString );
 logger.info( "GraphQL-Schema geladen." );
 
+
 const alleBuecherArray = [
     {
         id   : "1",
@@ -99,8 +100,6 @@ export const buecherResolver = {
 
         return buchAktualisiert;
     },
-
-
 
     buchLoeschen: ({ id }) => {
 
