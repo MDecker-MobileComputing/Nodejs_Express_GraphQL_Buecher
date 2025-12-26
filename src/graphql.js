@@ -4,6 +4,7 @@ import createLogger    from "logging";
 
 const logger = createLogger( "graphql" );
 
+
 // Schema aus separater Datei einlesen
 const schemaString = readFileSync( "src/schema.graphql", "utf8" );
 export const buecherSchema = buildSchema( schemaString );
