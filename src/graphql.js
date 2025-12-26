@@ -42,6 +42,18 @@ const alleBuecherArray = [
         autor: "George R. R. Martin",
         jahr : 1996,
         genre: "Fantasy"
+    }, {
+        id   : "6",
+        titel: "The Shining",
+        autor: "Stephen King",
+        jahr : 1977,
+        genre: "Horror"
+    }, {
+        id   : "7",
+        titel: "It",
+        autor: "Stephen King",
+        jahr : 1986,
+        genre: "Horror"
     }
 ];
 
